@@ -1,0 +1,411 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,array}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\title{Halving-partition nonregularity and\protect\\
+dyadic extensions of Alekseyev (2026)\protect\\
+arXiv:2611.01243v1, Section 6, paragraph 2, p.\ 18}
+\author{Haobo Ma\\{\small ChronoAI Pte Ltd, Singapore}
+\and Wenlin Zhang\\{\small National University of Singapore}\\
+{\small ChronoAI Pte Ltd, Singapore}}
+\date{10 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Extending Alekseyev's (2026) fixed-length enumeration, we answer negatively
+the question of whether the halving-partition count is
+$2$-regular, posed in Section~6, second paragraph, page~18, of
+\emph{Halving Partitions and Hyperbinary Expansions}
+(arXiv:2611.01243v1, 2026).
+An exact classification at $n=2^m+1$ gives a step function whose first
+difference has arbitrarily long zero blocks followed by a one.
+The dyadic length and total-part identities specialize his Theorem~5;
+the list classification supplies an alternative proof.
+A finite decimation family would impose a monic linear recurrence on this
+difference, which is impossible. The argument also excludes finite
+decimation families over every nonzero commutative ring and shows that the
+count modulo any integer $q\ge2$ is not $2$-automatic. We also give explicit
+dyadic deficit and digit-weight formulas, a flat length distribution,
+and the same nonregularity obstruction in every base $2^s$, $s\ge1$.
+\end{abstract}
+
+\section{The question and the counting convention}
+Alekseyev's Section~6 question \cite[p.~18]{alekseyev} concerns a finite
+family of integer sequences containing $a(n)$ and closed, under integer
+linear combinations with fixed coefficients, under both substitutions
+$n\mapsto2n$ and $n\mapsto2n+1$. We show that such a family does not exist.
+This is a question about finite generation, not about whether the sequence
+has a finite set of values.
+
+We use Definition~1 of \cite[p.~1]{alekseyev}. A halving partition of $n>0$
+is a finite list $(p_1,\ldots,p_\ell)$ of positive integers with sum $n$,
+where $p_0=n$ and
+\[
+ p_i\in\{\lfloor p_{i-1}/2\rfloor,\lceil p_{i-1}/2\rceil\}
+ \quad(1\le i\le\ell).
+\]
+Coincident halves are one value, not two choices. These lists are
+nonincreasing; repeated parts, including terminal ones, are retained.
+The empty list is the unique partition of zero. Let $a_\ell(n)$ count
+partitions of length $\ell$ and $a(n)=\sum_\ell a_\ell(n)$.
+This is OEIS A349552 \cite{oeis}. OEIS A349553 records the least input
+with a prescribed value of this count.
+
+For a commutative ring $R$ with $1\ne0$, call an $R$-valued sequence
+\emph{$2$-regular over $R$} if it belongs to a finite family whose two
+decimations are fixed $R$-linear combinations of that family. Enumerating
+the family gives a column $F(n)\in R^d$, with the sequence as first
+coordinate, and matrices $M_0,M_1\in R^{d\times d}$ such that
+\begin{equation}\label{eq:family}
+ F(2n)=M_0F(n),\qquad F(2n+1)=M_1F(n)\quad(n\ge0).
+\end{equation}
+Conversely these identities give such a family. Neither linear
+independence of its members nor invertibility of the matrices is assumed.
+The integer case is the question in \cite{alekseyev}. For the standard
+complex linear-representation formulation, see
+\cite[Definition~1, p.~24:3]{heuberger}; here the coefficient ring is
+specified explicitly.
+
+\begin{theorem}\label{thm:main}
+For every nonzero commutative ring $R$, the sequence
+$a_R(n)=a(n)1_R$ is not $2$-regular over $R$.
+\end{theorem}
+
+\section{The exact dyadic profile}
+Put $T_r=2^r+r+1$ for $r\ge1$ and, for $m\ge2$, put
+\[
+ R_m=\#\{r\ge1:T_r\le m\}.
+\]
+The set being counted is either empty or $\{1,\ldots,R_m\}$.
+
+\begin{lemma}\label{lem:profile}
+For $m\ge2$, the length enumerator is
+\begin{equation}\label{eq:polynomial}
+ \sum_{\ell\ge0}a_\ell(2^m+1)z^\ell
+ =z^m(1+z+z^2)+\sum_{r=1}^{R_m}z^{m-r}.
+\end{equation}
+In particular,
+\begin{equation}\label{eq:count}
+ b_m:=a(2^m+1)=3+R_m.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Starting at $2^m+1$, the first $m$ positions of a positive halving chain
+follow one of two branches. As long as the upper branch is taken, position
+$i$ has value $2^{m-i}+1$. The first lower branch gives $2^{m-i}$;
+subsequent values are forced powers of two until reaching $1$, after
+which all positive values are $1$.
+
+More precisely, fix a length $\ell$. Its baseline word has entry
+$2^{m-i}$ at positions $1\le i\le\min(m,\ell)$ and entry $1$ at positions
+$i>m$. Every positive chain of this length is obtained by adding one to
+the first $j$ entries, for a unique
+$0\le j\le\min(m,\ell)$. To see exhaustiveness, observe that from an
+odd value $2^s+1$ the two halves are $2^{s-1}$ and $2^{s-1}+1$;
+once the former occurs, a positive half of a power of two is forced.
+Conversely every displayed word obeys the halving rule. Distinct $j$
+give different words, so this is a classification without multiplicity.
+
+For $\ell\le m$ the baseline sum is $2^m-2^{m-\ell}$. The total-sum
+condition is therefore
+\begin{equation}\label{eq:short}
+ j=2^{m-\ell}+1.
+\end{equation}
+For $\ell\ge m$ the baseline sum is $2^m-1+(\ell-m)$, so the condition is
+\begin{equation}\label{eq:long}
+ j+(\ell-m)=2.
+\end{equation}
+When $\ell<m$, set $r=m-\ell\ge1$. Equation~\eqref{eq:short} is
+admissible exactly when $2^r+1\le\ell=m-r$, or $T_r\le m$;
+it then gives one word of length $m-r$.
+When $\ell\ge m$, equation~\eqref{eq:long} gives exactly
+$(\ell,j)=(m,2),(m+1,1),(m+2,0)$, all admissible because $m\ge2$.
+These disjoint cases prove \eqref{eq:polynomial} and \eqref{eq:count}.
+\end{proof}
+
+These enumerative identities also follow directly from Alekseyev's
+Theorem~5 \cite[pp.~5--6]{alekseyev}. His recurrence (12), also
+\cite[Proposition~2.2]{mcconville}, gives
+$H_{2^j}(z)=z+\cdots+z^{j+1}$. For $1\le k<m$, his parameters are
+$Q_k(2^m+1)=2^{m-k}$ and $M_k(2^m+1)=2^k$, so the coefficient is one
+exactly when $k\ge2^{m-k}+1$. For $k\ge m$, it is
+$[z^{k-1}]H_{2^m}(z)$, giving $k=m,m+1,m+2$.
+Thus the length spectrum and its total-part sum are explicit
+specializations of his prior theorem.
+
+For example, $b_2=b_3=3$, $b_4=b_5=b_6=4$, and
+$b_7=\cdots=b_{11}=5$. At $n=17$, the four lengths are $3,4,5,6$.
+
+\begin{corollary}\label{cor:consequences}
+For $m\ge2$, the total number of parts across all halving partitions of
+$2^m+1$ is
+\begin{equation}\label{eq:parts}
+ \sum_\ell\ell\,a_\ell(2^m+1)
+ =(R_m+3)m+3-\frac{R_m(R_m+1)}2.
+\end{equation}
+For $m\ge4$, with $h=\lfloor\log_2m\rfloor$, one has
+$h+2\le b_m\le h+3$. Thus $b_m=\log_2m+O(1)$.
+\end{corollary}
+\begin{proof}
+Differentiate \eqref{eq:polynomial} and set $z=1$ to obtain
+\eqref{eq:parts}. If $T_r\le m$, then $2^r\le m$, hence $R_m\le h$.
+Since $h\ge2$ and $h\le2^{h-1}$, we have
+$T_{h-1}=2^{h-1}+h\le2^h\le m$, giving $R_m\ge h-1$.
+\end{proof}
+
+\begin{corollary}\label{cor:flat}
+For $m\ge2$, precisely one partition of $2^m+1$ has each length in
+$[m-R_m,m+2]$, and no other length occurs. Thus the full length
+distribution is flat, symmetric and unimodal. For every modulus $d\ge1$,
+the counts in length classes modulo $d$ differ pairwise by at most one.
+For a uniformly chosen
+partition its length has mean $m+1-R_m/2$ and variance
+$((R_m+3)^2-1)/12$.
+\end{corollary}
+\begin{proof}
+The thresholds $T_r$ increase strictly, so the exponents in
+\eqref{eq:polynomial} are consecutive and each coefficient is one.
+An interval of consecutive integers occupies each residue class modulo
+$d$ either $\lfloor(R_m+3)/d\rfloor$ or $\lceil(R_m+3)/d\rceil$ times.
+The mean is the midpoint of these $R_m+3$ integers. Translating them
+to $0,\ldots,R_m+2$ and using the sums of integers and their squares
+gives variance $(K^2-1)/12$ for $K=R_m+3$.
+\end{proof}
+
+\begin{corollary}\label{cor:deficit}
+Let $s$ be Stern's sequence, with $s(1)=1$, $s(2n)=s(n)$ and
+$s(2n+1)=s(n)+s(n+1)$ for $n\ge1$, and put $d(n)=s(n)-a(n)$.
+For $m\ge2$ and $v\ge0$,
+\[
+ d\bigl(2^v(2^m+1)\bigr)=m-2-R_m.
+\]
+The odd part has $m-1$ binary zeros. Thus for this family with exactly
+$z\ge1$ zero digits the deficit is $z-1-R_{z+1}$.
+\end{corollary}
+\begin{proof}
+The Stern recurrence gives $s(2^m+1)=m+1$ by induction, starting with
+$s(3)=2$. Subtract \eqref{eq:count}. Both $a(2n)=a(n)$
+\cite[Lemma~2]{alekseyev} and $s(2n)=s(n)$ preserve the deficit.
+\end{proof}
+
+\begin{corollary}\label{cor:offset}
+Let $A_\rho(n)$ count positive halving chains starting from the virtual
+predecessor $n$ with total $n+\rho$, as in \cite[Section~4]{alekseyev}.
+For $m\ge2$ and $\rho\ge0$,
+\[
+ A_\rho(2^m+1)=1+\min(m,\rho+2)
+                  +\#\{r\ge1:T_r+\rho\le m\}.
+\]
+In particular, for $m\ge3$ these counts first remain equal to $m+1$
+at offset $\rho=m-2$, agreeing with the source's exact threshold
+\cite[Theorem~17, Corollary~18]{alekseyev}.
+\end{corollary}
+\begin{proof}
+For $\ell<m$, the classified word has the required total exactly when
+$j=2^{m-\ell}+1+\rho\le\ell$, giving the displayed threshold count.
+For $\ell\ge m$, the condition becomes $j+(\ell-m)=\rho+2$.
+Each $0\le j\le\min(m,\rho+2)$ gives exactly one length and word.
+At $\rho\ge m-2$ the threshold set is empty and the long count is
+$m+1$; at $\rho=m-3\ge0$ it is $m$.
+\end{proof}
+
+For the refinement in Section~6, third paragraph, of \cite{alekseyev},
+set $q_i=p_{i-1}-2p_i+1$ and let $w(P)$ count the indices with $q_i=1$.
+This is exactly the number of even predecessors in the chain. Define
+$W_n(z,t)=\sum_P z^{\ell(P)}t^{w(P)}$, summing over halving partitions.
+\begin{corollary}\label{cor:weighted}
+For $m\ge2$, the sum-constrained digit refinement is
+\begin{align*}
+ W_{2^m+1}(z,t)={}&z^m t^{\max(0,m-3)}
+       +z^{m+1}t^{m-2}+z^{m+2}t^{m-1}\\
+       &+\sum_{r=1}^{R_m}z^{m-r}t^{\max(0,m-2^r-r-2)}.
+\end{align*}
+For $v\ge0$, $W_{2^v(2^m+1)}(z,t)=(zt)^vW_{2^m+1}(z,t)$.
+\end{corollary}
+\begin{proof}
+In the classification of Lemma~\ref{lem:profile}, the word with length
+$\ell<m$ has upper-prefix length $j=2^{m-\ell}+1$.
+Its predecessors through position $\min(\ell,j+1)$ are odd; the subsequent
+predecessors through position $\ell$ are even. Hence its weight exponent
+is $\max(0,\ell-j-1)$. For the three long words $(\ell,j)=(m,2)$,
+$(m+1,1)$ and $(m+2,0)$ the exponents are respectively
+$\max(0,m-3)$, $m-2$ and $m-1$. The case $m=2$, $j=m$, stops
+before any further even predecessor. These counts give the formula.
+Doubling the total prepends its unique first part, the previous total;
+this adds one part and one even predecessor.
+\end{proof}
+
+\section{A recurrence cannot have these gaps}
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Suppose \eqref{eq:family} represents $a_R$. Repeated even decimation
+and then odd decimation give, for $m\ge1$,
+\[
+ a_R(2^m+1)=e_1^{\mathsf T}M_1M_0^{m-1}F(1),
+\]
+where $e_1^{\mathsf T}$ selects the first coordinate.
+Write the characteristic polynomial of $M_0$ as
+$X^d+c_{d-1}X^{d-1}+\cdots+c_0$.
+The Cayley--Hamilton identity, valid over a commutative ring, gives
+\begin{equation}\label{eq:recurrence}
+ b_{m+d}+\sum_{i=0}^{d-1}c_i b_{m+i}=0\quad(m\ge2),
+\end{equation}
+with the integer values mapped into $R$.
+Subtracting consecutive identities shows that
+$\delta_m=b_{m+1}-b_m$ obeys the same monic forward recurrence.
+
+By \eqref{eq:count},
+\[
+ \delta_m=
+ \begin{cases}
+  1_R,&m=2^r+r\text{ for some }r\ge1,\\
+  0,&\text{otherwise}
+ \end{cases}
+ \qquad(m\ge2).
+\]
+The successive positions $J_r=2^r+r$ satisfy
+$J_{r+1}-J_r=2^r+1$. Thus $\delta_m$ has $2^r$ consecutive zeros
+at $J_r+1,\ldots,J_{r+1}-1$, followed by $\delta_{J_{r+1}}=1_R$.
+Choose $r$ with $2^r\ge d$. Starting with the first $d$ zeros,
+the monic recurrence forces every subsequent term to be zero by
+induction. This contradicts $1_R\ne0$. Only forward propagation is used;
+there is no division by a recurrence coefficient.
+\end{proof}
+
+\begin{corollary}\label{cor:automatic}
+For every integer $q\ge2$, the sequence $a(n)\bmod q$ is not
+$2$-automatic.
+\end{corollary}
+\begin{proof}
+If a finite automaton with output generates this sequence from the binary
+digits of $n$, then its $2$-kernel
+\[
+ \{n\mapsto a(2^e n+t)\bmod q:e\ge0,\ 0\le t<2^e\}
+\]
+is finite. Indeed, for each binary suffix its output is a map from the
+finite state set to the finite output set, so only finitely many such
+maps occur; $n=0$ adds at most a separate initial value. Both decimations
+send every kernel member to another kernel member. Viewed as
+$\Z/q\Z$-valued sequences, these members therefore form a finite
+decimation family, contrary to Theorem~\ref{thm:main}.
+\end{proof}
+
+\begin{corollary}\label{cor:bases}
+For every $s\ge1$, $a_R$ has no finite base-$2^s$ decimation family over
+a nonzero commutative ring $R$. For every $q\ge2$, $a(n)\bmod q$ is
+not $2^s$-automatic.
+\end{corollary}
+\begin{proof}
+Suppose a finite family $f_i$ is closed linearly under
+$n\mapsto2^s n+u$, $0\le u<2^s$. Adjoin the finitely many sequences
+$f_i(2^j n+t)$, $0\le j<s$, $0\le t<2^j$. Binary decimation
+increases $j$ by one and replaces $t$ by $t+2^j b$, $b\in\{0,1\}$.
+At $j=s-1$ the assumed base-$2^s$ identities return a linear combination
+of the original family. This yields a binary family, contradicting
+Theorem~\ref{thm:main}. A finite base-$2^s$ automaton gives a finite
+base-$2^s$ kernel, just as in Corollary~\ref{cor:automatic}.
+\end{proof}
+
+\section{Coverage and verification}
+The exact source question is Section~6, second paragraph, page~18, of
+\cite{alekseyev}; its status word is ``question.'' The same section
+also discusses the following distinct directions.
+
+\smallskip
+\noindent\begin{tabular}{@{}p{0.42\linewidth}p{0.53\linewidth}@{}}
+\toprule
+Source item & Coverage here\\
+\midrule
+Section 6, paragraph 2: finite integer decimation family & Answered: no;
+Theorem~\ref{thm:main} with $R=\Z$.\\
+Definition 1; Section 5 and Example 23: counts by length & Proved here
+at $2^v(2^m+1)$: the full distribution is flat
+(Corollary~\ref{cor:flat}, shifted by $v$). General unimodality is
+not asserted in the source; Example 23 gives an obstruction.\\
+Section 6, paragraph 1: deficit with more binary zeros &
+Partial answer: explicit for $2^v(2^m+1)$ in
+Corollary~\ref{cor:deficit}; the general formula is not covered.\\
+Section 4, Theorem 17 and Corollary 18: eventual chain counts &
+Explicit dyadic formula in Corollary~\ref{cor:offset}; its threshold
+is a specialization of the prior proof by Alekseyev (2026).\\
+Section 6, paragraph 1: maximum at fixed binary length &
+Not determined by the dyadic classification.\\
+Section 6, paragraph 3; Appendix (A14): weighted counts &
+Partial answer: exact $W_n(z,t)$ on the dyadic family in
+Corollary~\ref{cor:weighted}; general $n$ not covered.\\
+Section 6, paragraph 3: division by larger bases &
+Not covered; changing the division rule changes the partitions.\\
+Theorem 5: dyadic counts and total parts & Reproved; prior proof
+Alekseyev (2026), Theorem 5 by specialization. The list proof also gives
+the digit-weight refinement.\\
+OEIS A349553: least input with a specified count & Prior proof cited:
+Alekseyev (2026), Corollary 15 gives $a(2^k-1)=k$, so the least input
+exists and is at most $2^k-1$. Exact minima are not covered.\\
+OEIS A349552 formulas; source Lemma 2 and Corollary 15 &
+Prior proof cited: Alekseyev (2026), even dilation and Mersenne counts. These are
+existing identities, not new claims here.\\
+Ring, modular and base-$2^s$ extensions & Not posed in the source;
+proved here in Theorem~\ref{thm:main} and
+Corollaries~\ref{cor:automatic}, \ref{cor:bases}.\\
+\bottomrule
+\end{tabular}
+
+\medskip
+The written arguments prove all statements above, including the ring and
+modular extensions. The pinned Lean declaration
+\href{https://github.com/the-omega-institute/trureturing/blob/1154841a3345ca579e0d56fc4ceebee38814557c/D5/S1/Recurrence/Partitions/HalvingPartitionNonregularity.lean}
+{\texttt{HalvingPartitionNonregularity.result}}
+states integer nonexistence in both matrix and arbitrary finite-family
+forms, their equivalence, equality of the list and composition counts
+for every $n$, and $a(0)=1$. Its proof contains the dyadic classification
+and count formula. The ring extension, length polynomial, total-part
+formula, growth estimate, flat length distribution, deficit, digit-weight
+formula, offset-count formula and base-$2^s$ conclusions are supplied by
+the written proofs here.
+The accompanying \texttt{verify.py} gives
+finite exact checks of the counting formulas and examples; its numerical
+ranges are recorded in \texttt{verification.json}.
+
+The source's Lemma~2 and Theorems~5 and~8 already give even dilation,
+hyperbinary coefficients and the sharp fixed-length bound; our dyadic
+classification makes their specialized consequences explicit. No claim
+of priority is made. The general deficit, fixed-digit maximum and
+larger-division-base questions remain outside these formulas.
+
+\begin{thebibliography}{9}
+\bibitem{alekseyev}
+M.~A. Alekseyev,
+\emph{Halving Partitions and Hyperbinary Expansions},
+arXiv:2611.01243v1 (2026), Definition~1, p.~1; Section~6, p.~18.
+\href{https://arxiv.org/abs/2611.01243v1}{arXiv:2611.01243v1}.
+\bibitem{oeis}
+OEIS Foundation Inc.,
+\emph{The On-Line Encyclopedia of Integer Sequences}, A349552,
+``Number of halving partitions of $n$,'' introduced by C.~Kimberling
+(2021), and A349553, ``Least $k$ such that $n$ is the number of halving
+partitions of $k$''; consulted 10 November 2026.
+\url{https://oeis.org/A349552}; \url{https://oeis.org/A349553}.
+\bibitem{heuberger}
+C.~Heuberger, D.~Krenn and T.~Lechner,
+\emph{Analysis of Regular Sequences: Summatory Functions and
+Divide-And-Conquer Recurrences},
+LIPIcs \textbf{302}, AofA 2024, 24:1--24:14.
+\href{https://doi.org/10.4230/LIPIcs.AofA.2024.24}
+{doi:10.4230/LIPIcs.AofA.2024.24}.
+\bibitem{mcconville}
+T.~McConville, J.~Propp and B.~E. Sagan,
+\emph{Hyperbinary partitions and $q$-deformed rationals},
+arXiv:2508.20026v1 (2025), Proposition~2.2.
+\href{https://arxiv.org/abs/2508.20026v1}{arXiv:2508.20026v1}.
+\end{thebibliography}
+
+\bigskip\noindent
+\small\copyright\ 2026 Haobo Ma and Wenlin Zhang.
+Licensed under Creative Commons Attribution 4.0 International
+(CC BY 4.0).
+\end{document}

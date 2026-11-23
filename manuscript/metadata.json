@@ -1,0 +1,15 @@
+{
+  "id": "alekseyev-halving-partitions-nonregularity",
+  "revision": 2,
+  "problem_ids": ["alekseyev-halving-partitions-nonregularity"],
+  "topic": "A negative answer to the finite binary-decimation-family question and explicit dyadic halving-partition refinements",
+  "title": "Halving-partition nonregularity and dyadic extensions of Alekseyev (2026): arXiv:2611.01243v1, Section 6, paragraph 2, p. 18",
+  "creators": [
+    {"name": "Ma, Haobo", "affiliation": "ChronoAI Pte Ltd, Singapore"},
+    {"name": "Zhang, Wenlin", "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore"}
+  ],
+  "abstract": "Extending Alekseyev's (2026) fixed-length enumeration, we answer negatively the question of whether the halving-partition count is 2-regular, posed in Section 6, second paragraph, page 18, of Halving Partitions and Hyperbinary Expansions (arXiv:2611.01243v1, 2026). An exact classification at n=2^m+1 gives a step function whose first difference has arbitrarily long zero blocks followed by a one. The dyadic length and total-part identities specialize his Theorem 5; the list classification supplies an alternative proof. A finite decimation family would impose a monic linear recurrence on this difference, which is impossible. The argument also excludes finite decimation families over every nonzero commutative ring and shows that the count modulo any integer q>=2 is not 2-automatic. We also give explicit dyadic deficit and digit-weight formulas, a flat length distribution, and the same nonregularity obstruction in every base 2^s, s>=1.",
+  "summary": "The count is not 2^s-regular over any nonzero commutative ring for s>=1, and its reductions modulo q>=2 are not 2^s-automatic. Written proofs give dyadic length, total-part, growth, deficit, offset-count, digit-weight and moment formulas. The offset stabilization threshold specializes Alekseyev (2026).",
+  "license": "cc-by-4.0",
+  "evidence_url": "https://github.com/the-omega-institute/trureturing/blob/1154841a3345ca579e0d56fc4ceebee38814557c/D5/S1/Recurrence/Partitions/HalvingPartitionNonregularity.lean"
+}

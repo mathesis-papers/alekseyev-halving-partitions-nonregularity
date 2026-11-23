@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this work, cite it."
+title: "Halving-partition nonregularity and dyadic extensions of Alekseyev (2026): arXiv:2611.01243v1, Section 6, paragraph 2, p. 18"
+authors:
+  - name: "Haobo Ma"
+  - name: "Wenlin Zhang"
+date-released: "2026-11-23"
+version: "2"
+url: "https://mathesis-omega-research.apps.chrono-ai.fun/papers/alekseyev-halving-partitions-nonregularity?version=2"
+license: "CC-BY-4.0"

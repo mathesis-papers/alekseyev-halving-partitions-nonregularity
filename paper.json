@@ -1,0 +1,66 @@
+{
+  "files": {
+    "pdf": {
+      "bytes": 85473,
+      "matches_public": true,
+      "path": "paper.pdf",
+      "public_sha256": "64c330aa4d512b0d614a852e6969453df6daf85931a64fbfb4b369d66f41b78a",
+      "sha256": "64c330aa4d512b0d614a852e6969453df6daf85931a64fbfb4b369d66f41b78a"
+    },
+    "source": {
+      "bytes": 14142,
+      "matches_public": true,
+      "path": "source.archive",
+      "public_sha256": "ce6480f9ec5f64f9d30e58ddf0d7900947f84ce702e85b097d08b61fcda9d604",
+      "sha256": "ce6480f9ec5f64f9d30e58ddf0d7900947f84ce702e85b097d08b61fcda9d604"
+    }
+  },
+  "source_identity": "Mathesis public projection",
+  "work": {
+    "abstract_text": "Extending Alekseyev's (2026) fixed-length enumeration, we answer negatively the question of whether the halving-partition count is 2-regular, posed in Section 6, second paragraph, page 18, of Halving Partitions and Hyperbinary Expansions (arXiv:2611.01243v1, 2026). An exact classification at n=2^m+1 gives a step function whose first difference has arbitrarily long zero blocks followed by a one. The dyadic length and total-part identities specialize his Theorem 5; the list classification supplies an alternative proof. A finite decimation family would impose a monic linear recurrence on this difference, which is impossible. The argument also excludes finite decimation families over every nonzero commutative ring and shows that the count modulo any integer q>=2 is not 2-automatic. We also give explicit dyadic deficit and digit-weight formulas, a flat length distribution, and the same nonregularity obstruction in every base 2^s, s>=1.",
+    "authors": [
+      {
+        "affiliation": "ChronoAI Pte Ltd, Singapore",
+        "name": "Haobo Ma"
+      },
+      {
+        "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore",
+        "name": "Wenlin Zhang"
+      }
+    ],
+    "concept_doi": null,
+    "current_version": 2,
+    "doi": null,
+    "lean_source": {
+      "revision": "1154841a3345ca579e0d56fc4ceebee38814557c",
+      "url": "https://github.com/the-omega-institute/trureturing/blob/1154841a3345ca579e0d56fc4ceebee38814557c/D5/S1/Recurrence/Partitions/HalvingPartitionNonregularity.lean"
+    },
+    "license": "CC-BY-4.0",
+    "msc": [],
+    "pdf": {
+      "bytes": 85473,
+      "sha256": "64c330aa4d512b0d614a852e6969453df6daf85931a64fbfb4b369d66f41b78a",
+      "url": "/api/v1/collected-papers/alekseyev-halving-partitions-nonregularity/files/pdf?version=2"
+    },
+    "previous_version": null,
+    "publication": "public",
+    "published_on": "2026-11-23T02:26:39.441589809Z",
+    "record": "alekseyev-halving-partitions-nonregularity",
+    "repository_name": "alekseyev-halving-partitions-nonregularity",
+    "source": {
+      "bytes": 14142,
+      "sha256": "ce6480f9ec5f64f9d30e58ddf0d7900947f84ce702e85b097d08b61fcda9d604",
+      "url": "/api/v1/collected-papers/alekseyev-halving-partitions-nonregularity/files/source?version=2"
+    },
+    "title": "Halving-partition nonregularity and dyadic extensions of Alekseyev (2026): arXiv:2611.01243v1, Section 6, paragraph 2, p. 18",
+    "versions": [
+      {
+        "previous_version": null,
+        "published_on": "2026-11-23T02:26:39.441589809Z",
+        "revision": "2",
+        "version": 2
+      }
+    ],
+    "work": "alekseyev-halving-partitions-nonregularity"
+  }
+}
